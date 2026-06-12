@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import API from '../api'; 
 
 const Home = () => {
     const [posts, setPosts] = useState([]);
@@ -9,8 +9,8 @@ const Home = () => {
 
     useEffect(() => {
         const fetchPosts = async () => {
-            try {
-                const res = await axios.get('http://localhost:5000/api/posts');
+            try { 
+                const res = await API.get('/api/posts');
                 setPosts(res.data);
             } catch (err) {
                 console.error("Error fetching posts:", err);
