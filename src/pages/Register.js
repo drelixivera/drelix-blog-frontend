@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import API from '../api'; 
 import { Link, useNavigate } from 'react-router-dom';
 
 const Register = () => {
