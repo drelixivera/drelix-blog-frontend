@@ -23,7 +23,7 @@ const Home = () => {
     const handleLike = async (postId) => {
     if (!token) return alert('You must be logged in to like posts!');
     try {
-        const res = await axios.put(`http://localhost:5000/api/posts/like/${postId}`, {}, {
+        const res = await API.put(`http://localhost:5000/api/posts/like/${postId}`, {}, {
             headers: { 'x-auth-token': token }
         });
         
@@ -43,7 +43,7 @@ const Home = () => {
 
     try {
         // ADD http://localhost:5000 HERE 👇
-        const res = await axios.post(`http://localhost:5000/api/posts/comment/${postId}`, { text }, {
+        const res = await API.post(`http://localhost:5000/api/posts/comment/${postId}`, { text }, {
             headers: { 'x-auth-token': token }
         });
         setPosts(posts.map(post => post._id === postId ? { ...post, comments: res.data } : post));
