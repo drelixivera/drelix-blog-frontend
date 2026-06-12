@@ -15,7 +15,7 @@ const Login = () => {
     const onSubmit = async e => {
         e.preventDefault();
         try {
-            const res = await axios.post('/api/login', formData);
+            const res = await API.post('/api/login', formData);
             localStorage.setItem('token', res.data.token);
             alert("Logged in successfully!");
             window.location.href = "/"; 

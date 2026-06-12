@@ -17,7 +17,7 @@ const Register = () => {
     const onSubmit = async e => {
         e.preventDefault();
         try {
-            await axios.post('/api/register', formData);
+            await axios.API('/api/register', formData);
             alert("Registered successfully!");
             navigate('/login'); 
         } catch (err) {
