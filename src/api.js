@@ -6,7 +6,7 @@ const isLocalhost = window.location.hostname === 'localhost';
 // this automatically set the backend destination target based on the environment
 const API_URL = isLocalhost
     ? 'http://localhost:5000' // local development
-    : 'https://mern-social-media-backend.onrender.com'; // production
+    : ' https://drelix-blog-backend.onrender.com'; // production
 
 const API = axios.create({
     baseURL: API_URL
