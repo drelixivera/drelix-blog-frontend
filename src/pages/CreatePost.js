@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import API from '../api'; 
 import { useNavigate } from 'react-router-dom';
 
 const CreatePost = () => {
@@ -12,7 +12,7 @@ const CreatePost = () => {
         const token = localStorage.getItem('token');
 
         try {
-            await axios.post('/api/posts', 
+            await API.post('/api/posts', 
                 { title, content }, 
                 { headers: { 'x-auth-token': token } } 
             );
