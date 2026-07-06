@@ -4,18 +4,16 @@ import Register from './pages/Register';
 import Login from './pages/Login';
 import Home from './pages/Home';
 import CreatePost from './pages/CreatePost';
+import Footer from './components/Footer';
 
 function App() {
   const token = localStorage.getItem('token');
   let username = null;
 
-   
   if (token) {
     try {
       const decoded = jwtDecode(token);
       console.log("Your Decoded Token Payload:", decoded);
-      
-      
       username = decoded.user?.username || decoded.username || decoded.user?.email || "User"; 
     } catch (err) {
       console.error("Invalid token:", err);
@@ -30,39 +28,50 @@ function App() {
 
   return (
     <Router>
-      <nav className="navbar navbar-expand-lg navbar-dark bg-dark sticky-top shadow-sm">
-        <div className="container">
-          <Link to="/" className="navbar-brand fw-bold text-primary fs-4">
-            Drelix<span className="text-white">Blog</span>
-          </Link>
-          
-          <div className="d-flex align-items-center gap-3">
-            <Link to="/" className="nav-link text-white-50 small">Home</Link>
-            {token ? (
-              <>
-                {/* Visual Indicator: Displays the logged-in user's name */}
-                <span className="text-white-50 small me-2">
-                  Logged in as: <strong className="text-primary">@{username}</strong>
-                </span>
-                <Link to="/create" className="btn btn-primary btn-sm px-3 fw-semibold">Create Post</Link>
-                <button onClick={handleLogout} className="btn btn-outline-danger btn-sm px-3">Logout</button>
-              </>
-            ) : (
-              <>
-                <Link to="/login" className="nav-link text-white-50 small">Login</Link>
-                <Link to="/register" className="btn btn-primary btn-sm px-3 fw-semibold">Sign Up</Link>
-              </>
-            )}
+      {/* 🌟 MASTER CANVAS: Gradient covers the entire page viewport fluidly */}
+      <div className="d-flex flex-column min-vh-100" 
+           style={{ background: 'linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%)' }}>
+        
+        {/* NAVBAR */}
+        <nav className="navbar navbar-expand-lg navbar-dark bg-dark sticky-top shadow-sm">
+          <div className="container">
+            <Link to="/" className="navbar-brand fw-bold text-primary fs-4">
+              Drelix<span className="text-white">Blog</span>
+            </Link>
+            
+            <div className="d-flex align-items-center gap-3">
+              <Link to="/" className="nav-link text-white-50 small">Home</Link>
+              {token ? (
+                <>
+                  <span className="text-white-50 small me-2">
+                    Logged in as: <strong className="text-primary">@{username}</strong>
+                  </span>
+                  <Link to="/create" className="btn btn-primary btn-sm px-3 fw-semibold">Create Post</Link>
+                  <button onClick={handleLogout} className="btn btn-outline-danger btn-sm px-3">Logout</button>
+                </>
+              ) : (
+                <>
+                  <Link to="/login" className="nav-link text-white-50 small">Login</Link>
+                  <Link to="/register" className="btn btn-primary btn-sm px-3 fw-semibold">Sign Up</Link>
+                </>
+              )}
+            </div>
           </div>
-        </div>
-      </nav>
+        </nav>
 
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/create" element={<CreatePost />} />
-      </Routes>
+        {/* 🌟 ROUTING MAIN BODY CONTENT: flex-grow-1 pushes footer to bottom */}
+        <div className="flex-grow-1 d-flex flex-column">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/create" element={<CreatePost />} />
+          </Routes>
+        </div>
+
+        {/* FOOTER */}
+        <Footer />
+      </div>
     </Router>
   );
 }

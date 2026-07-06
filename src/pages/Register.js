@@ -27,17 +27,47 @@ const Register = () => {
     };
 
     return (
-        <div className="bg-light min-vh-100 d-flex align-items-center justify-content-center py-5">
-            <div className="card border-0 shadow-sm p-4 w-100" style={{ maxWidth: '420px' }}>
-                <div className="card-body">
-                    <h2 className="fw-bold text-dark text-center mb-4">Create an Account</h2>
+        <div className="d-flex align-items-center justify-content-center flex-grow-1 py-5" style={{ background: 'transparent' }}>
+            
+            {/* INJECT ANIMATION STYLES DYNAMICALLY */}
+            <style>{`
+                @keyframes fadeInUp {
+                    from {
+                        opacity: 0;
+                        transform: translateY(20px);
+                    }
+                    to {
+                        opacity: 1;
+                        transform: translateY(0);
+                    }
+                }
+                .auth-card {
+                    animation: fadeInUp 0.5s ease-out forwards;
+                    background: rgba(30, 41, 59, 0.4) !important;
+                    backdrop-filter: blur(16px);
+                    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+                    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+                }
+                .form-control:focus {
+                    background-color: rgba(15, 23, 42, 0.6) !important;
+                    border-color: #38bdf8 !important;
+                    box-shadow: 0 0 0 0.25rem rgba(56, 189, 248, 0.25) !important;
+                    color: white !important;
+                }
+            `}</style>
+
+            <div className="card auth-card p-4 rounded-3 text-light w-100" style={{ maxWidth: '420px' }}>
+                <div className="card-body p-2">
+                    <h2 className="fw-bold text-center text-white mb-4" style={{ letterSpacing: '-0.5px' }}>
+                        Join the <span style={{ background: 'linear-gradient(45deg, #38bdf8, #818cf8)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Space</span>
+                    </h2>
                     
                     <form onSubmit={onSubmit}>
                         <div className="mb-3">
-                            <label className="form-label small fw-semibold text-secondary">Username</label>
+                            <label className="form-label small fw-semibold text-light text-opacity-75">Username</label>
                             <input 
                                 type="text" 
-                                className="form-control form-control-lg fs-6" 
+                                className="form-control form-control-lg fs-6 bg-dark bg-opacity-50 text-white border-secondary border-opacity-25" 
                                 placeholder="Enter your username" 
                                 name="username" 
                                 value={username} 
@@ -45,11 +75,12 @@ const Register = () => {
                                 required 
                             />
                         </div>
+
                         <div className="mb-3">
-                            <label className="form-label small fw-semibold text-secondary">Email Address</label>
+                            <label className="form-label small fw-semibold text-light text-opacity-75">Email Address</label>
                             <input 
                                 type="email" 
-                                className="form-control form-control-lg fs-6" 
+                                className="form-control form-control-lg fs-6 bg-dark bg-opacity-50 text-white border-secondary border-opacity-25" 
                                 placeholder="name@example.com" 
                                 name="email" 
                                 value={email} 
@@ -57,11 +88,12 @@ const Register = () => {
                                 required 
                             />
                         </div>
+
                         <div className="mb-4">
-                            <label className="form-label small fw-semibold text-secondary">Password</label>
+                            <label className="form-label small fw-semibold text-light text-opacity-75">Password</label>
                             <input 
                                 type="password" 
-                                className="form-control form-control-lg fs-6" 
+                                className="form-control form-control-lg fs-6 bg-dark bg-opacity-50 text-white border-secondary border-opacity-25" 
                                 placeholder="Choose a secure password" 
                                 name="password" 
                                 value={password} 
@@ -69,13 +101,15 @@ const Register = () => {
                                 required 
                             />
                         </div>
-                        <button type="submit" className="btn btn-primary btn-lg w-100 fs-6 fw-semibold mb-3">
+
+                        <button type="submit" className="btn w-100 fw-bold py-2 text-white mb-3 transition-all"
+                                style={{ background: 'linear-gradient(45deg, #4f46e5, #6366f1)', border: 'none' }}>
                             Sign Up
                         </button>
                     </form>
                     
-                    <p className="text-center text-muted small mb-0">
-                        Already have an account? <Link to="/login" className="text-primary fw-medium text-decoration-none">Log In</Link>
+                    <p className="text-center text-light text-opacity-50 small mb-0 mt-2">
+                        Already have an account? <Link to="/login" style={{ color: '#38bdf8', textDecoration: 'none' }} className="fw-semibold">Log In</Link>
                     </p>
                 </div>
             </div>
