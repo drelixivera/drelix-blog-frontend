@@ -33,31 +33,67 @@ function App() {
            style={{ background: 'linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%)' }}>
         
         {/* NAVBAR */}
-        <nav className="navbar navbar-expand-lg navbar-dark bg-dark sticky-top shadow-sm">
-          <div className="container">
-            <Link to="/" className="navbar-brand fw-bold text-primary fs-4">
-              Drelix<span className="text-white">Blog</span>
-            </Link>
-            
-            <div className="d-flex align-items-center gap-3">
-              <Link to="/" className="nav-link text-white-50 small">Home</Link>
-              {token ? (
-                <>
-                  <span className="text-white-50 small me-2">
-                    Logged in as: <strong className="text-primary">@{username}</strong>
-                  </span>
-                  <Link to="/create" className="btn btn-primary btn-sm px-3 fw-semibold">Create Post</Link>
-                  <button onClick={handleLogout} className="btn btn-outline-danger btn-sm px-3">Logout</button>
-                </>
-              ) : (
-                <>
-                  <Link to="/login" className="nav-link text-white-50 small">Login</Link>
-                  <Link to="/register" className="btn btn-primary btn-sm px-3 fw-semibold">Sign Up</Link>
-                </>
-              )}
-            </div>
-          </div>
-        </nav>
+        
+<nav className="navbar navbar-expand-lg navbar-dark sticky-top border-bottom border-secondary border-opacity-25" 
+     style={{ background: 'rgba(15, 23, 42, 0.75)', backdropFilter: 'blur(16px)', zIndex: 1030 }}>
+  <div className="container">
+    <Link to="/" className="navbar-brand fw-bold fs-4" style={{ letterSpacing: '-0.5px' }}>
+      <span style={{ color: '#38bdf8' }}>Drelix</span><span className="text-white">Blog</span>
+    </Link>
+    
+    {/* MOBILE COMPONENT HAMBURGER CONTROLLER */}
+    <button className="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#appNavbar" aria-controls="appNavbar" aria-expanded="false" aria-label="Toggle navigation">
+      <span className="navbar-toggler-icon"></span>
+    </button>
+    
+    {/* COLLAPSIBLE DATA LINKS ELEMENT CONTAINER */}
+    <div className="collapse navbar-collapse" id="appNavbar">
+      <ul className="navbar-nav ms-auto align-items-lg-center gap-3 mt-3 mt-lg-0">
+        <li className="nav-item">
+          <Link to="/" className="nav-link text-light text-opacity-75 small fw-medium px-2 hover-sky" 
+                style={{ transition: 'color 0.2s' }}>
+            Home
+          </Link>
+        </li>
+        {token ? (
+          <>
+            <li className="nav-item">
+              <span className="text-light text-opacity-50 small d-block py-1">
+                Logged in as: <strong style={{ color: '#38bdf8' }}>@{username}</strong>
+              </span>
+            </li>
+            <li className="nav-item">
+              <Link to="/create" className="btn btn-sm px-3 fw-bold text-white w-100 text-center" 
+                    style={{ background: 'linear-gradient(45deg, #4f46e5, #6366f1)', border: 'none' }}>
+                Create Post
+              </Link>
+            </li>
+            <li className="nav-item">
+              <button onClick={handleLogout} className="btn btn-sm btn-outline-danger px-3 fw-semibold w-100 text-center"
+                      style={{ borderRadius: '6px', border: '1px solid rgba(239, 68, 68, 0.4)' }}>
+                Logout
+              </button>
+            </li>
+          </>
+        ) : (
+          <>
+            <li className="nav-item">
+              <Link to="/login" className="nav-link text-light text-opacity-75 small fw-medium px-2 hover-sky">
+                Login
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link to="/register" className="btn btn-sm px-3 fw-bold text-white w-100 text-center"
+                    style={{ background: 'linear-gradient(45deg, #4f46e5, #6366f1)', border: 'none' }}>
+                Sign Up
+              </Link>
+            </li>
+          </>
+        )}
+      </ul>
+    </div>
+  </div>
+</nav>
 
         {/* 🌟 ROUTING MAIN BODY CONTENT: flex-grow-1 pushes footer to bottom */}
         <div className="flex-grow-1 d-flex flex-column">

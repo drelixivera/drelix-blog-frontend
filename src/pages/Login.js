@@ -53,6 +53,9 @@ const Login = () => {
                     box-shadow: 0 0 0 0.25rem rgba(56, 189, 248, 0.25) !important;
                     color: white !important;
                 }
+                .hover-sky:hover {
+    color: #38bdf8 !important;
+}
             `}</style>
 
             <div className="card auth-card p-4 rounded-3 text-light w-100" style={{ maxWidth: '420px' }}>
