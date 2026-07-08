@@ -4,6 +4,7 @@ import Register from './pages/Register';
 import Login from './pages/Login';
 import Home from './pages/Home';
 import CreatePost from './pages/CreatePost';
+import Dashboard from './pages/Dashboard';
 import Footer from './components/Footer';
 
 function App() {
@@ -51,23 +52,31 @@ function App() {
       <ul className="navbar-nav ms-auto align-items-lg-center gap-3 mt-3 mt-lg-0">
         <li className="nav-item">
           <Link to="/" className="nav-link text-light text-opacity-75 small fw-medium px-2 hover-sky" 
-                style={{ transition: 'color 0.2s' }}>
+                style={{ transition: 'color 0.2s', mouseOver: { color: '#38bdf8' } }}>
             Home
           </Link>
         </li>
         {token ? (
           <>
             <li className="nav-item">
+              <Link to="/create" className="nav-link text-light text-opacity-75 small fw-medium px-2 hover-sky" 
+                    style={{  }}>
+                Create Post
+              </Link> 
+            </li>
+
+            <li >
+                <Link className="nav-link text-light text-opacity-75 small fw-medium px-2 hover-sky" to="/dashboard" style={{  }}>
+                  Dashboard
+                </Link>
+            </li>
+
+            <li className="nav-item">
               <span className="text-light text-opacity-50 small d-block py-1">
-                Logged in as: <strong style={{ color: '#38bdf8' }}>@{username}</strong>
+                User: <strong className="text-light text-opacity-50 small   py-1" style={{ color: '#38bdf8' }}>{username}</strong>
               </span>
             </li>
-            <li className="nav-item">
-              <Link to="/create" className="btn btn-sm px-3 fw-bold text-white w-100 text-center" 
-                    style={{ background: 'linear-gradient(45deg, #4f46e5, #6366f1)', border: 'none' }}>
-                Create Post
-              </Link>
-            </li>
+
             <li className="nav-item">
               <button onClick={handleLogout} className="btn btn-sm btn-outline-danger px-3 fw-semibold w-100 text-center"
                       style={{ borderRadius: '6px', border: '1px solid rgba(239, 68, 68, 0.4)' }}>
@@ -82,6 +91,7 @@ function App() {
                 Login
               </Link>
             </li>
+ 
             <li className="nav-item">
               <Link to="/register" className="btn btn-sm px-3 fw-bold text-white w-100 text-center"
                     style={{ background: 'linear-gradient(45deg, #4f46e5, #6366f1)', border: 'none' }}>
@@ -102,6 +112,7 @@ function App() {
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
             <Route path="/create" element={<CreatePost />} />
+            <Route path="/dashboard" element={<Dashboard />} />
           </Routes>
         </div>
 
