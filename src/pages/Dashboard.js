@@ -28,6 +28,26 @@ const Dashboard = () => {
         fetchMyPosts();
     }, []);
 
+    const handleDelete = async (postId) => {
+        // this shows a native confirmation dialog box befofre wiping data
+        if (window.confirm("Are you sure you want to delete this post permanently?")) {
+            try {
+                const token = localStorage.getItem('token');
+
+                //this hit the backend delete route endpoint
+                await axios.delete(`http://localhost:5000/api/posts/${postId}`, {
+                    headers: { 'x-auth-token': token }
+                });
+                // Optimistic UI update: 
+                // Instantly filter out the deleted post from the state so it disappear from the screen without reloading
+                setMyPosts(myPosts.filter(post => post._id !== postId));
+            } catch (err) {
+                console.error("Error deleting post:", err);
+                alert("Failed to delete the post. Try again.");
+            }
+        }
+    }
+
     return (
         <div className="container mt-5 pt-4" style={{ minHeight: '85vh', color: 'white' }}>
             {/* Profile Header Card */}
@@ -55,7 +75,7 @@ const Dashboard = () => {
             ) : myPosts.length === 0 ? (
                 <div className="text-center p-5 rounded auth-card">
                     <p className="text-muted fs-5">You haven't published any posts yet.</p>
-                    <Link to="/create-post" className="btn btn-info px-4 rounded-pill text-white fw-bold">
+                    <Link to="/create" className="btn btn-info px-4 rounded-pill text-white fw-bold">
                         Write Your First Post
                     </Link>
                 </div>
@@ -78,8 +98,15 @@ const Dashboard = () => {
                                 <div className="d-flex justify-content-between align-items-center mt-4 pt-3 border-top border-secondary">
                                     <span className="text-info small"> {post.likes?.length || 0} Likes</span>
                                     <div className="d-flex gap-2">
-                                        <button className="btn btn-outline-warning btn-sm rounded-pill px-3">Edit</button>
-                                        <button className="btn btn-outline-danger btn-sm rounded-pill px-3">Delete</button>
+                                        <Link to={`/edit-post/${post._id}`} className="btn btn-outline-warning btn-sm rounded-pill px-3">
+                                            Edit
+                                        </Link>
+                                        <button 
+                                            className="btn btn-outline-danger btn-sm rounded-pill px-3"
+                                            onClick={() => handleDelete(post._id)} 
+                                        >
+                                            Delete
+                                        </button>
                                     </div>
                                 </div>
                             </div>

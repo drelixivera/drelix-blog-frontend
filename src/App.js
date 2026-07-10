@@ -5,6 +5,7 @@ import Login from './pages/Login';
 import Home from './pages/Home';
 import CreatePost from './pages/CreatePost';
 import Dashboard from './pages/Dashboard';
+import EditPost from './pages/EditPost';
 import Footer from './components/Footer';
 
 function App() {
@@ -113,6 +114,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/create" element={<CreatePost />} />
             <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/edit-post/:id" element={<EditPost />} />
           </Routes>
         </div>
 
