@@ -2,7 +2,7 @@ Drelix Blog Frontend
 
 A modern, highly responsive frontend for a dynamic blogging platform. This application features seamless API integration, efficient dynamic routing, and optimal performance for content delivery.
 
-🔗 [Live Demo](drelix-blog-frontend-q9xd.vercel.app)
+🔗 Live Demo - drelix-blog-frontend-q9xd.vercel.app
 
  🚀 Features
 Dynamic Content Loading: Connects with backend APIs to fetch and display posts dynamically.
@@ -21,7 +21,7 @@ Deployment: Vercel
 To run this project locally, clone the repository and install the dependencies:
 
 ```bash
-git clone [https://github.com/YOUR_GITHUB_USERNAME/drelix-blog-frontend.git](https://github.com/YOUR_GITHUB_USERNAME/drelix-blog-frontend.git)
+git clone [https://github.com/drelixivera/drelix-blog-frontend.git](https://github.com/drelixivera/drelix-blog-frontend.git)
 cd drelix-blog-frontend
 npm install
 npm start
