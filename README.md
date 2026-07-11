@@ -2,7 +2,7 @@ Drelix Blog Frontend
 
 A modern, highly responsive frontend for a dynamic blogging platform. This application features seamless API integration, efficient dynamic routing, and optimal performance for content delivery.
 
-🔗 Live Demo - drelix-blog-frontend-q9xd.vercel.app
+🔗 Live Demo - https://drelix-blog-frontend-q9xd.vercel.app
 
  🚀 Features
 Dynamic Content Loading: Connects with backend APIs to fetch and display posts dynamically.
